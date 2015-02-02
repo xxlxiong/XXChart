@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BC672E0C-1626-4BED-95C3-753517F40153</string>
+	<key>IDESourceControlProjectName</key>
+	<string>XXChart</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>426254B98104F8BDE9F8698F0297A1C77E6ADCBE</key>
+		<string>https://github.com/xxlxiong/XXChart.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>XXChart/XXChart.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>426254B98104F8BDE9F8698F0297A1C77E6ADCBE</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/xxlxiong/XXChart.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>426254B98104F8BDE9F8698F0297A1C77E6ADCBE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>426254B98104F8BDE9F8698F0297A1C77E6ADCBE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hud-XXChart</string>
+		</dict>
+	</array>
+</dict>
+</plist>
