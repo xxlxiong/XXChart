@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "XXLineChart.h"
 #import "XXLineChartData.h"
+#import "XXColors.h"
 
 @interface ViewController ()<XXChartDelegate>
 @property (weak, nonatomic) IBOutlet XXLineChart *lineChart;
@@ -25,7 +26,7 @@
     _lineChart.yLabels = @[@"0",@"20",@"40",@"60",@"80"];
     XXLineChartData *lineData = [XXLineChartData getLineChartDataByArray:@[@"0.0",@"0.0",@"35.0",@"40"]];
     lineData.inflexionPointStyle=LineChartPointStyleCycle;
-    lineData.color = [UIColor redColor];
+    lineData.color = PNGreen;
     _lineChart.chartData = @[lineData];
     _lineChart.delegate = self;
     

@@ -49,6 +49,10 @@
     _axisColor = [UIColor blackColor];
     isReDrawContent = YES;
     
+    _isAllowPointSelect = YES;
+    _isFill = YES;
+    _selectPointColor = [UIColor redColor];
+    _pointRadius = 1.;
     //据四周默认为20
     _chartMargin.top=20;
     _chartMargin.bottom = 20;
@@ -439,6 +443,7 @@
         UIGraphicsPopContext();
         
         [self strokeChart:NO duration:1.0];
+        [self showSelectPoint:LineChartPointStyleCycle];
     }
 }
 
@@ -448,7 +453,7 @@
     CGPoint touchPoint = [touch locationInView:self];
     pTouchPoint = touchPoint;
     
-    for (int p = pathPoints.count - 1; p >= 0; p--) {
+    for (NSInteger p = pathPoints.count - 1; p >= 0; p--) {
         NSArray *linePointsArray = pathPoints[p];
         
         for (int i = 0; i < linePointsArray.count - 1; i += 1) {
@@ -464,6 +469,11 @@
                 [_delegate userClickedOnLineKeyPoint:touchPoint
                                            lineIndex:p
                                        andPointIndex:xBeginIndex+(distance == distanceToP2 ? i + 1 : i)];
+                if(_isAllowPointSelect)
+                {
+                    selectedPoint = (distance == distanceToP2)?p2:p1;
+                    [self showSelectPoint:LineChartPointStyleCycle];
+                }
                 return;
             }
         }
@@ -494,6 +504,39 @@
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     pTouchPoint = CGPointZero;
+}
+
+//select point show
+- (void)showSelectPoint:(LineChartPointStyle)pointStyle
+{
+    if (_isAllowPointSelect) {
+        UIGraphicsBeginImageContext(self.frame.size);
+        
+        if(!selectShowLayer)
+        {
+            selectShowLayer = [CAShapeLayer layer];
+            selectShowLayer.strokeColor = _selectPointColor.CGColor;
+            selectShowLayer.fillColor     = _isFill?_selectPointColor.CGColor:nil;
+            selectShowLayer.lineWidth     = _pointRadius;
+            [self.layer addSublayer:selectShowLayer];
+        }
+        
+        CGPoint showPoint = CGPointMake(selectedPoint.x+xOriginPoint.x-_chartMargin.left, selectedPoint.y);
+        if(showPoint.x<_chartMargin.left)
+            selectShowLayer.path = nil;
+        else
+        {
+            UIBezierPath *selectPath = [UIBezierPath bezierPath];
+            
+            if(pointStyle == LineChartPointStyleCycle)
+            {
+                [selectPath addArcWithCenter:showPoint radius:5.0/2 startAngle:0 endAngle:2*M_PI clockwise:YES];
+            }
+            [selectPath stroke];
+            selectShowLayer.path = selectPath.CGPath;
+        }
+        UIGraphicsEndImageContext();
+    }
 }
 
 @end

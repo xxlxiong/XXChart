@@ -12,10 +12,13 @@
 @interface XXLineChart : UIView
 {
     CAShapeLayer *conentLayer;
+    CAShapeLayer *selectShowLayer;
     float xAxisLength;
     float yAxisLength;
     
     CGPoint pTouchPoint;
+    CGPoint selectedPoint;
+    
     CGPoint xOriginPoint;   //逻辑上x轴起始点<-计算用这个
     CGPoint yOriginPoint;   //y轴起始点
     NSUInteger xBeginIndex; //x轴从数据集中第几个开始显示(即处于xBeginIndex位置的xLabels元素为x轴开始数值
@@ -94,5 +97,17 @@
 @property (nonatomic, getter = isShowCoordinateAxis) BOOL showCoordinateAxis;
 
 @property (nonatomic, assign) id<XXChartDelegate> delegate;
+
+/**
+ *  select point
+ */
+@property (nonatomic) BOOL isAllowPointSelect;
+@property (nonatomic) UIColor *selectPointColor;
+@property (nonatomic) float pointRadius;
+
+/*
+ *  selected point is filled color
+ */
+@property (nonatomic) BOOL isFill;
 
 @end
