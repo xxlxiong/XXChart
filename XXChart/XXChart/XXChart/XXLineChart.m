@@ -139,7 +139,7 @@
         {
             NSString *labelText = _yLabels[i];
             CATextLayer *textLayer = [CATextLayer new];
-            textLayer.frame = CGRectMake(yOriginPoint.x-5-25, yOriginPoint.y+yAxisLength-i*_yUnitDis-7, 25, 15);
+            textLayer.frame = CGRectMake(yOriginPoint.x-5-_chartMargin.left, yOriginPoint.y+yAxisLength-i*_yUnitDis-7, _chartMargin.left, 15);
             textLayer.string = labelText;
             textLayer.fontSize = 12;
             textLayer.alignmentMode = @"right";
@@ -472,6 +472,7 @@
                 if(_isAllowPointSelect)
                 {
                     selectedPoint = (distance == distanceToP2)?p2:p1;
+                    selectedPoint.x = selectedPoint.x-xOriginPoint.x+_chartMargin.left;
                     [self showSelectPoint:LineChartPointStyleCycle];
                 }
                 return;
